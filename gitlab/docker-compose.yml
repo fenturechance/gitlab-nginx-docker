@@ -12,7 +12,7 @@ services:
       - /srv/gitlab/data:/var/opt/gitlab
     networks:
       default:
-        ipv4_address: 192.168.148.1
+        ipv4_address: 192.168.148.2
 networks:
   default:
     external:
