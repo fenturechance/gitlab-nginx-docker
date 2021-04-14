@@ -1,18 +1,21 @@
 version: "3"
 services:
   nginx:
-    image: nginx:1.17.1
+    # image: nginx:1.17.1
+    image: ubuntu:20.04
     restart: always
+    stdin_open: true
+    tty: true
     ports:
       - "80:80"
       - "443:443"
     volumes:
-      - ./default.conf:/etc/nginx/conf.d/default.conf
-      - ./set-certbot.sh:/usr/local/bin/set-certbot.sh
+      - ./default.conf:/home/default.conf
+      - ./set-certbot.sh:/home/set-certbot.sh
     networks:
       default:
         ipv4_address: 192.168.148.3
-    command: sh -c "/usr/local/bin/set-certbot.sh"
+    command: sh -c "sh /home/set-certbot.sh"
 networks:
   default:
     external:
